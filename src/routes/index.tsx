@@ -327,7 +327,7 @@ function StatsBar() {
 }
 
 function StatItem({ icon: Icon, target, suffix, decimals = 0, label, delay }: any) {
-  const { ref, formatted } = useCountUp(target, 2000, decimals);
+  const { ref, formatted } = useCountUp<HTMLDivElement>(target, 2000, decimals);
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
