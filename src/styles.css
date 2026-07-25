@@ -229,3 +229,45 @@
     radial-gradient(60% 40% at 90% 10%, color-mix(in oklab, oklch(0.55 0.15 240) 8%, transparent), transparent 70%),
     radial-gradient(50% 40% at 10% 90%, color-mix(in oklab, var(--brand-soft) 7%, transparent), transparent 70%);
 }
+
+/* Hero "shine" word — gold gradient text with entrance + subtle shimmer */
+@keyframes hero-shine-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-shine-sweep {
+  0%   { background-position: 200% 50%; }
+  8%   { background-position: -100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
+.hero-shine {
+  display: inline-block;
+  background-image: linear-gradient(
+    100deg,
+    #C89B3C 0%,
+    #E7C66A 45%,
+    #FFFFFF 50%,
+    #E7C66A 55%,
+    #C89B3C 100%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation:
+    hero-shine-in 0.8s ease-out both,
+    hero-shine-sweep 9s ease-in-out 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shine {
+    animation: none;
+    background-image: linear-gradient(100deg, #C89B3C 0%, #E7C66A 100%);
+    background-size: 100% 100%;
+    background-position: 0 0;
+  }
+}
+

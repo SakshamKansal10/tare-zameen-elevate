@@ -141,7 +141,7 @@ function Hero() {
             <br />
             on earth
             <br />
-            deserves to <span className="italic text-brand story-underline">shine.</span>
+            deserves to <span className="hero-shine italic">shine.</span>
             <span className="ml-2 inline-block text-gold">
               <Sparkles className="inline size-6" />
             </span>
