@@ -14,7 +14,14 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
 import { Route as CampaignsIdRouteImport } from './routes/campaigns.$id'
+import { Route as DashboardReceiptsIdRouteImport } from './routes/dashboard.receipts.$id'
+import { Route as DashboardAdminTemplatesRouteImport } from './routes/dashboard.admin.templates'
+import { Route as DashboardAdminNotificationsRouteImport } from './routes/dashboard.admin.notifications'
+import { Route as ApiCronRecurringRemindersRouteImport } from './routes/api/cron/recurring-reminders'
+import { Route as ApiCronMonthlySummaryRouteImport } from './routes/api/cron/monthly-summary'
 
 const PartnerRoute = PartnerRouteImport.update({
   id: '/partner',
@@ -41,36 +48,93 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const CampaignsIdRoute = CampaignsIdRouteImport.update({
   id: '/campaigns/$id',
   path: '/campaigns/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardReceiptsIdRoute = DashboardReceiptsIdRouteImport.update({
+  id: '/receipts/$id',
+  path: '/receipts/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAdminTemplatesRoute = DashboardAdminTemplatesRouteImport.update({
+  id: '/admin/templates',
+  path: '/admin/templates',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAdminNotificationsRoute =
+  DashboardAdminNotificationsRouteImport.update({
+    id: '/admin/notifications',
+    path: '/admin/notifications',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const ApiCronRecurringRemindersRoute =
+  ApiCronRecurringRemindersRouteImport.update({
+    id: '/api/cron/recurring-reminders',
+    path: '/api/cron/recurring-reminders',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiCronMonthlySummaryRoute = ApiCronMonthlySummaryRouteImport.update({
+  id: '/api/cron/monthly-summary',
+  path: '/api/cron/monthly-summary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/donate': typeof DonateRoute
   '/login': typeof LoginRoute
   '/partner': typeof PartnerRoute
   '/campaigns/$id': typeof CampaignsIdRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/cron/monthly-summary': typeof ApiCronMonthlySummaryRoute
+  '/api/cron/recurring-reminders': typeof ApiCronRecurringRemindersRoute
+  '/dashboard/admin/notifications': typeof DashboardAdminNotificationsRoute
+  '/dashboard/admin/templates': typeof DashboardAdminTemplatesRoute
+  '/dashboard/receipts/$id': typeof DashboardReceiptsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
   '/login': typeof LoginRoute
   '/partner': typeof PartnerRoute
   '/campaigns/$id': typeof CampaignsIdRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/api/cron/monthly-summary': typeof ApiCronMonthlySummaryRoute
+  '/api/cron/recurring-reminders': typeof ApiCronRecurringRemindersRoute
+  '/dashboard/admin/notifications': typeof DashboardAdminNotificationsRoute
+  '/dashboard/admin/templates': typeof DashboardAdminTemplatesRoute
+  '/dashboard/receipts/$id': typeof DashboardReceiptsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
+  '/dashboard': typeof DashboardRouteWithChildren
   '/donate': typeof DonateRoute
   '/login': typeof LoginRoute
   '/partner': typeof PartnerRoute
   '/campaigns/$id': typeof CampaignsIdRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/cron/monthly-summary': typeof ApiCronMonthlySummaryRoute
+  '/api/cron/recurring-reminders': typeof ApiCronRecurringRemindersRoute
+  '/dashboard/admin/notifications': typeof DashboardAdminNotificationsRoute
+  '/dashboard/admin/templates': typeof DashboardAdminTemplatesRoute
+  '/dashboard/receipts/$id': typeof DashboardReceiptsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +145,27 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner'
     | '/campaigns/$id'
+    | '/dashboard/notifications'
+    | '/dashboard/'
+    | '/api/cron/monthly-summary'
+    | '/api/cron/recurring-reminders'
+    | '/dashboard/admin/notifications'
+    | '/dashboard/admin/templates'
+    | '/dashboard/receipts/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/donate' | '/login' | '/partner' | '/campaigns/$id'
+  to:
+    | '/'
+    | '/donate'
+    | '/login'
+    | '/partner'
+    | '/campaigns/$id'
+    | '/dashboard/notifications'
+    | '/dashboard'
+    | '/api/cron/monthly-summary'
+    | '/api/cron/recurring-reminders'
+    | '/dashboard/admin/notifications'
+    | '/dashboard/admin/templates'
+    | '/dashboard/receipts/$id'
   id:
     | '__root__'
     | '/'
@@ -91,15 +174,24 @@ export interface FileRouteTypes {
     | '/login'
     | '/partner'
     | '/campaigns/$id'
+    | '/dashboard/notifications'
+    | '/dashboard/'
+    | '/api/cron/monthly-summary'
+    | '/api/cron/recurring-reminders'
+    | '/dashboard/admin/notifications'
+    | '/dashboard/admin/templates'
+    | '/dashboard/receipts/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
   DonateRoute: typeof DonateRoute
   LoginRoute: typeof LoginRoute
   PartnerRoute: typeof PartnerRoute
   CampaignsIdRoute: typeof CampaignsIdRoute
+  ApiCronMonthlySummaryRoute: typeof ApiCronMonthlySummaryRoute
+  ApiCronRecurringRemindersRoute: typeof ApiCronRecurringRemindersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -139,6 +231,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/campaigns/$id': {
       id: '/campaigns/$id'
       path: '/campaigns/$id'
@@ -146,17 +252,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CampaignsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/receipts/$id': {
+      id: '/dashboard/receipts/$id'
+      path: '/receipts/$id'
+      fullPath: '/dashboard/receipts/$id'
+      preLoaderRoute: typeof DashboardReceiptsIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/admin/templates': {
+      id: '/dashboard/admin/templates'
+      path: '/admin/templates'
+      fullPath: '/dashboard/admin/templates'
+      preLoaderRoute: typeof DashboardAdminTemplatesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/admin/notifications': {
+      id: '/dashboard/admin/notifications'
+      path: '/admin/notifications'
+      fullPath: '/dashboard/admin/notifications'
+      preLoaderRoute: typeof DashboardAdminNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/api/cron/recurring-reminders': {
+      id: '/api/cron/recurring-reminders'
+      path: '/api/cron/recurring-reminders'
+      fullPath: '/api/cron/recurring-reminders'
+      preLoaderRoute: typeof ApiCronRecurringRemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/cron/monthly-summary': {
+      id: '/api/cron/monthly-summary'
+      path: '/api/cron/monthly-summary'
+      fullPath: '/api/cron/monthly-summary'
+      preLoaderRoute: typeof ApiCronMonthlySummaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardAdminNotificationsRoute: typeof DashboardAdminNotificationsRoute
+  DashboardAdminTemplatesRoute: typeof DashboardAdminTemplatesRoute
+  DashboardReceiptsIdRoute: typeof DashboardReceiptsIdRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardAdminNotificationsRoute: DashboardAdminNotificationsRoute,
+  DashboardAdminTemplatesRoute: DashboardAdminTemplatesRoute,
+  DashboardReceiptsIdRoute: DashboardReceiptsIdRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
   DonateRoute: DonateRoute,
   LoginRoute: LoginRoute,
   PartnerRoute: PartnerRoute,
   CampaignsIdRoute: CampaignsIdRoute,
+  ApiCronMonthlySummaryRoute: ApiCronMonthlySummaryRoute,
+  ApiCronRecurringRemindersRoute: ApiCronRecurringRemindersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

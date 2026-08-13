@@ -13,7 +13,10 @@ export const Route = createFileRoute("/campaigns/$id")({
   head: ({ params }) => ({
     meta: [
       { title: `Campaign ${params.id} — Tare Zameen Foundation` },
-      { name: "description", content: "View verified community drive details, live progress, and pledge instantly." },
+      {
+        name: "description",
+        content: "View verified community drive details, live progress, and pledge instantly.",
+      },
       { property: "og:title", content: `Support campaign ${params.id}` },
       { property: "og:description", content: "Real-time verified community drive." },
       { property: "og:type", content: "website" },
@@ -31,10 +34,18 @@ function CampaignPage() {
     <>
       <Navbar />
       <main className="mx-auto min-h-dvh max-w-[1000px] px-6 pb-20 pt-32 lg:px-10">
-        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-navy">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-navy"
+        >
           <ArrowLeft className="size-4" /> Back to drives
         </Link>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mt-6"
+        >
           {category && (
             <span className="inline-flex rounded-md bg-brand/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand">
               {category}
@@ -47,9 +58,9 @@ function CampaignPage() {
             <MapPin className="size-4" /> Verified community · Real-time tracking
           </div>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            Every pledge is directly matched to a verified beneficiary. You'll
-            receive real-time updates as the drive progresses, along with an
-            80G-compliant tax receipt and impact certificate on completion.
+            Every pledge is directly matched to a verified beneficiary. You'll receive real-time
+            updates as the drive progresses, along with an 80G-compliant tax receipt and impact
+            certificate on completion.
           </p>
 
           <div className="mt-8 rounded-2xl border border-border bg-white p-6 shadow-soft">

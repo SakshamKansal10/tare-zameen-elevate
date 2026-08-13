@@ -119,10 +119,7 @@ function Hero() {
 
       <div className="mx-auto grid max-w-[1400px] items-center gap-8 px-6 lg:grid-cols-12 lg:gap-6 lg:px-10">
         {/* Left content */}
-        <motion.div
-          style={{ y, opacity }}
-          className="relative z-10 lg:col-span-6"
-        >
+        <motion.div style={{ y, opacity }} className="relative z-10 lg:col-span-6">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -152,9 +149,8 @@ function Hero() {
             transition={{ duration: 0.9, delay: 0.25 }}
             className="mt-6 max-w-lg text-[15.5px] leading-relaxed text-muted-foreground"
           >
-            We use technology and radical transparency to connect donors,
-            housing societies, and corporations directly with verified
-            communities for measurable impact.
+            We use technology and radical transparency to connect donors, housing societies, and
+            corporations directly with verified communities for measurable impact.
           </motion.p>
 
           <motion.div
@@ -168,7 +164,13 @@ function Hero() {
               className="group inline-flex items-center gap-2 rounded-xl grad-brand px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition-all hover:scale-[1.03] hover:shadow-[0_20px_50px_-15px_oklch(0.72_0.19_149/0.7)]"
             >
               Donate Now
-              <svg className="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <svg
+                className="size-4 transition-transform group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
             </Link>
@@ -243,10 +245,20 @@ function Hero() {
             <div className="mt-2 flex items-center">
               <div className="flex -space-x-2">
                 {[story1, story3, story2].map((s, i) => (
-                  <img key={i} src={s} alt="" width={512} height={512} loading="lazy" className="size-6 rounded-full border-2 border-white object-cover" />
+                  <img
+                    key={i}
+                    src={s}
+                    alt=""
+                    width={512}
+                    height={512}
+                    loading="lazy"
+                    className="size-6 rounded-full border-2 border-white object-cover"
+                  />
                 ))}
               </div>
-              <div className="ml-2 text-[10.5px] text-muted-foreground">Across 3,245 communities</div>
+              <div className="ml-2 text-[10.5px] text-muted-foreground">
+                Across 3,245 communities
+              </div>
             </div>
           </motion.div>
 
@@ -270,9 +282,22 @@ function Hero() {
   );
 }
 
-function HeroCount({ target, suffix = "", decimals = 0 }: { target: number; suffix?: string; decimals?: number }) {
+function HeroCount({
+  target,
+  suffix = "",
+  decimals = 0,
+}: {
+  target: number;
+  suffix?: string;
+  decimals?: number;
+}) {
   const { ref, formatted } = useCountUp(target, 2000, decimals);
-  return <span ref={ref}>{formatted}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {formatted}
+      {suffix}
+    </span>
+  );
 }
 
 function MiniSpark() {
@@ -304,7 +329,13 @@ function StatsBar() {
   const stats = [
     { icon: Users, target: 28450, suffix: "+", label: "Lives Impacted" },
     { icon: HomeIcon, target: 162, suffix: "", label: "Active Housing Societies" },
-    { icon: IndianRupee, target: 5.2, suffix: " Cr+", decimals: 1, label: "Community Support Mobilised" },
+    {
+      icon: IndianRupee,
+      target: 5.2,
+      suffix: " Cr+",
+      decimals: 1,
+      label: "Community Support Mobilised",
+    },
     { icon: ShieldCheck, target: 98.8, suffix: "%", decimals: 1, label: "Transparency Score" },
     { icon: Star, target: 4.9, suffix: "/5", decimals: 1, label: "Donor Satisfaction" },
   ] as const;
@@ -326,7 +357,21 @@ function StatsBar() {
   );
 }
 
-function StatItem({ icon: Icon, target, suffix, decimals = 0, label, delay }: any) {
+function StatItem({
+  icon: Icon,
+  target,
+  suffix,
+  decimals = 0,
+  label,
+  delay,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  target: number;
+  suffix: string;
+  decimals?: number;
+  label: string;
+  delay: number;
+}) {
   const { ref, formatted } = useCountUp<HTMLDivElement>(target, 2000, decimals);
   return (
     <motion.div
@@ -368,7 +413,10 @@ function Solution() {
     <Section id="impact" className="mx-auto mt-16 max-w-[1300px] px-6 lg:mt-24 lg:px-10">
       <div className="grid gap-5 lg:grid-cols-3">
         {/* Challenge */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-border bg-white p-6 shadow-soft">
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl border border-border bg-white p-6 shadow-soft"
+        >
           <div className="flex items-center gap-2">
             <AlertCircle className="size-5 text-navy" />
             <h3 className="font-display text-xl font-semibold text-navy">The Challenge</h3>
@@ -386,7 +434,10 @@ function Solution() {
         </motion.div>
 
         {/* Solution (dark navy) */}
-        <motion.div variants={fadeUp} className="grad-navy relative overflow-hidden rounded-2xl p-6 text-white shadow-elegant">
+        <motion.div
+          variants={fadeUp}
+          className="grad-navy relative overflow-hidden rounded-2xl p-6 text-white shadow-elegant"
+        >
           <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-soft/25 blur-3xl" />
           <div className="flex items-center gap-2">
             <Lightbulb className="size-5 text-brand-glow" />
@@ -412,16 +463,26 @@ function Solution() {
         </motion.div>
 
         {/* Transparency */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-border bg-white p-6 shadow-soft">
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl border border-border bg-white p-6 shadow-soft"
+        >
           <div className="flex items-center gap-2">
             <ShieldCheck className="size-5 text-brand" />
-            <h3 className="font-display text-xl font-semibold text-navy">Independently Audited.<br/>Radically Transparent.</h3>
+            <h3 className="font-display text-xl font-semibold text-navy">
+              Independently Audited.
+              <br />
+              Radically Transparent.
+            </h3>
           </div>
           <p className="mt-5 text-[13.5px] leading-relaxed text-muted-foreground">
-            Every need, every rupee, every impact is documented, verified and
-            available for our donors in real-time.
+            Every need, every rupee, every impact is documented, verified and available for our
+            donors in real-time.
           </p>
-          <a href="#transparency" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand story-underline">
+          <a
+            href="#transparency"
+            className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand story-underline"
+          >
             Explore Our Transparency <ArrowRight className="size-4" />
           </a>
         </motion.div>
@@ -433,16 +494,46 @@ function Solution() {
 /* ---------- IMPACT PILLARS ---------- */
 function Pillars() {
   const pillars = [
-    { icon: BookOpen, tint: "bg-brand", title: "Education", body: "Quality education and learning resources for every child.", img: pillarEdu, link: "Explore Education" },
-    { icon: Utensils, tint: "bg-brand", title: "Nutrition", body: "Nutritious meals and awareness programs to end hunger and malnutrition.", img: pillarNut, link: "Explore Nutrition" },
-    { icon: HeartPulse, tint: "bg-sky-500", title: "Healthcare", body: "Accessible healthcare and wellness for stronger communities.", img: pillarHc, link: "Explore Healthcare" },
-    { icon: Laptop, tint: "bg-violet-600", title: "Digital Access", body: "Bridging the digital divide with devices and internet access for all.", img: pillarDig, link: "Explore Digital Access" },
+    {
+      icon: BookOpen,
+      tint: "bg-brand",
+      title: "Education",
+      body: "Quality education and learning resources for every child.",
+      img: pillarEdu,
+      link: "Explore Education",
+    },
+    {
+      icon: Utensils,
+      tint: "bg-brand",
+      title: "Nutrition",
+      body: "Nutritious meals and awareness programs to end hunger and malnutrition.",
+      img: pillarNut,
+      link: "Explore Nutrition",
+    },
+    {
+      icon: HeartPulse,
+      tint: "bg-sky-500",
+      title: "Healthcare",
+      body: "Accessible healthcare and wellness for stronger communities.",
+      img: pillarHc,
+      link: "Explore Healthcare",
+    },
+    {
+      icon: Laptop,
+      tint: "bg-violet-600",
+      title: "Digital Access",
+      body: "Bridging the digital divide with devices and internet access for all.",
+      img: pillarDig,
+      link: "Explore Digital Access",
+    },
   ];
 
   return (
     <Section className="mx-auto mt-20 max-w-[1300px] px-6 lg:mt-28 lg:px-10">
       <div className="text-center">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">Our Impact Pillars</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+          Our Impact Pillars
+        </p>
         <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">
           Focused Areas. <span className="italic text-brand">Lasting Change.</span>
         </h2>
@@ -451,7 +542,7 @@ function Pillars() {
         {pillars.map((p, i) => (
           <motion.a
             key={p.title}
-            href="#"
+            href={`/donate?category=${encodeURIComponent(p.title)}`}
             variants={fadeUp}
             custom={i}
             whileHover={{ y: -8 }}
@@ -466,12 +557,19 @@ function Pillars() {
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
-              <div className={cn("absolute left-4 top-4 grid size-10 place-items-center rounded-xl text-white shadow-glow transition-transform duration-500 group-hover:rotate-[6deg]", p.tint)}>
+              <div
+                className={cn(
+                  "absolute left-4 top-4 grid size-10 place-items-center rounded-xl text-white shadow-glow transition-transform duration-500 group-hover:rotate-[6deg]",
+                  p.tint,
+                )}
+              >
                 <p.icon className="size-5" />
               </div>
             </div>
             <div className="p-5">
-              <h3 className="font-display text-xl font-semibold text-navy transition-colors group-hover:text-brand">{p.title}</h3>
+              <h3 className="font-display text-xl font-semibold text-navy transition-colors group-hover:text-brand">
+                {p.title}
+              </h3>
               <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{p.body}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand">
                 <span className="story-underline">{p.link}</span>
@@ -499,10 +597,46 @@ type Drive = {
 };
 
 const DRIVES: Drive[] = [
-  { id: "d1", category: "Education", tint: "bg-brand", title: "School Kits for 50 Children", location: "Sector 4, Community Center", pledgedPct: 65, pledgedText: "33/50 Pledged", img: drive1 },
-  { id: "d2", category: "Healthcare", tint: "bg-sky-500", title: "Medical Camp in Sector 7", location: "10th June · 500 Beneficiaries", pledgedPct: 42, pledgedText: "21/50 Pledged", img: drive2 },
-  { id: "d3", category: "Nutrition", tint: "bg-brand", title: "Mid-Day Meal Support for 120 Children", location: "Government School, Block D", pledgedPct: 78, pledgedText: "78/120 Pledged", img: drive3 },
-  { id: "d4", category: "Education", tint: "bg-violet-600", title: "Digital Learning Devices for 25 Students", location: "Underprivileged Students", pledgedPct: 48, pledgedText: "12/25 Pledged", img: drive4 },
+  {
+    id: "d1",
+    category: "Education",
+    tint: "bg-brand",
+    title: "School Kits for 50 Children",
+    location: "Sector 4, Community Center",
+    pledgedPct: 65,
+    pledgedText: "33/50 Pledged",
+    img: drive1,
+  },
+  {
+    id: "d2",
+    category: "Healthcare",
+    tint: "bg-sky-500",
+    title: "Medical Camp in Sector 7",
+    location: "10th June · 500 Beneficiaries",
+    pledgedPct: 42,
+    pledgedText: "21/50 Pledged",
+    img: drive2,
+  },
+  {
+    id: "d3",
+    category: "Nutrition",
+    tint: "bg-brand",
+    title: "Mid-Day Meal Support for 120 Children",
+    location: "Government School, Block D",
+    pledgedPct: 78,
+    pledgedText: "78/120 Pledged",
+    img: drive3,
+  },
+  {
+    id: "d4",
+    category: "Education",
+    tint: "bg-violet-600",
+    title: "Digital Learning Devices for 25 Students",
+    location: "Underprivileged Students",
+    pledgedPct: 48,
+    pledgedText: "12/25 Pledged",
+    img: drive4,
+  },
 ];
 
 function Drives() {
@@ -524,14 +658,21 @@ function Drives() {
 
   return (
     <Section id="drives" className="mt-20 lg:mt-28">
-      <div className="relative overflow-hidden bg-navy py-14 lg:py-16" style={{ background: "linear-gradient(135deg, oklch(0.18 0.05 265), oklch(0.24 0.06 265))" }}>
+      <div
+        className="relative overflow-hidden bg-navy py-14 lg:py-16"
+        style={{
+          background: "linear-gradient(135deg, oklch(0.18 0.05 265), oklch(0.24 0.06 265))",
+        }}
+      >
         <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-soft/12 blur-3xl" />
         <div className="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl" />
 
         <div className="mx-auto max-w-[1300px] px-6 lg:px-10">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-glow">Live Community Needs</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-glow">
+                Live Community Needs
+              </p>
               <h2 className="mt-2 flex items-center gap-3 font-display text-3xl font-semibold text-white sm:text-4xl">
                 Real Needs. <span className="italic">Real-Time.</span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/25 px-2.5 py-1 text-[11px] font-semibold text-brand-glow">
@@ -543,12 +684,16 @@ function Drives() {
                 </span>
               </h2>
             </div>
-            <a href="#" className="text-sm font-semibold text-white/85 hover:text-white">
+            <Link to="/donate" className="text-sm font-semibold text-white/85 hover:text-white">
               View All Active Drives <ArrowRight className="ml-1 inline size-4" />
-            </a>
+            </Link>
           </div>
 
-          <div className="relative mt-8" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div
+            className="relative mt-8"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             <button
               onClick={() => scrollTo((index - 1 + DRIVES.length) % DRIVES.length)}
               aria-label="Previous"
@@ -580,7 +725,10 @@ function Drives() {
                 key={i}
                 onClick={() => scrollTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={cn("h-1.5 rounded-full transition-all", i === index ? "w-8 bg-brand-soft" : "w-3 bg-white/25 hover:bg-white/40")}
+                className={cn(
+                  "h-1.5 rounded-full transition-all",
+                  i === index ? "w-8 bg-brand-soft" : "w-3 bg-white/25 hover:bg-white/40",
+                )}
               />
             ))}
           </div>
@@ -620,13 +768,25 @@ function DriveCard({ drive, active }: { drive: Drive; active: boolean }) {
       )}
     >
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img src={drive.img} alt={drive.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
-        <span className={cn("absolute left-3 top-3 rounded-md px-2 py-0.5 text-[10.5px] font-semibold text-white shadow-glow", drive.tint)}>
+        <img
+          src={drive.img}
+          alt={drive.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+        />
+        <span
+          className={cn(
+            "absolute left-3 top-3 rounded-md px-2 py-0.5 text-[10.5px] font-semibold text-white shadow-glow",
+            drive.tint,
+          )}
+        >
           {drive.category}
         </span>
       </div>
       <div className="p-4">
-        <h3 className="font-display text-[17px] font-semibold leading-snug text-white">{drive.title}</h3>
+        <h3 className="font-display text-[17px] font-semibold leading-snug text-white">
+          {drive.title}
+        </h3>
         <p className="mt-1 text-[12px] text-white/60">{drive.location}</p>
 
         <div className="mt-4 flex items-center justify-between text-[11.5px] font-medium">
@@ -662,9 +822,21 @@ function DriveCard({ drive, active }: { drive: Drive; active: boolean }) {
 function CSR() {
   const items = [
     { icon: Handshake, title: "Adopt a Drive", body: "Choose a cause and community to support." },
-    { icon: LineChart, title: "Track Impact", body: "Real-time tracking with complete transparency." },
-    { icon: FileBadge, title: "Impact Certificates", body: "Automated society impact certificates and reports." },
-    { icon: FileText, title: "CSR Reports", body: "End-to-end CSR compliant reports for your records." },
+    {
+      icon: LineChart,
+      title: "Track Impact",
+      body: "Real-time tracking with complete transparency.",
+    },
+    {
+      icon: FileBadge,
+      title: "Impact Certificates",
+      body: "Automated society impact certificates and reports.",
+    },
+    {
+      icon: FileText,
+      title: "CSR Reports",
+      body: "End-to-end CSR compliant reports for your records.",
+    },
   ];
   return (
     <Section id="csr" className="mx-auto mt-20 max-w-[1300px] px-6 lg:mt-28 lg:px-10">
@@ -682,14 +854,15 @@ function CSR() {
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="lg:col-span-7">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">Stronger Together</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+            Stronger Together
+          </p>
           <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
             Create Greater Impact <br /> With Your Community
           </h2>
           <p className="mt-3 max-w-lg text-[14.5px] leading-relaxed text-muted-foreground">
-            Housing societies, RWAs & Corporates can adopt drives, track
-            impact in real-time and receive verified impact certificates
-            automatically.
+            Housing societies, RWAs & Corporates can adopt drives, track impact in real-time and
+            receive verified impact certificates automatically.
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -723,7 +896,7 @@ function CSR() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <a
-              href="#"
+              href="mailto:info@tarezameenfoundation.org?subject=CSR%20Partnership%20Consultation"
               className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-5 py-3 text-sm font-semibold text-navy hover:bg-accent"
             >
               Book a Consultation <ArrowRight className="size-4" />
@@ -752,15 +925,22 @@ function Transparency() {
 
   return (
     <Section id="transparency" className="mx-auto mt-20 max-w-[1300px] px-6 lg:mt-28 lg:px-10">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">Radical Transparency</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+        Radical Transparency
+      </p>
       <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
         Because Trust is Our <span className="italic text-brand">Foundation</span>.
       </h2>
 
       <div className="mt-8 grid gap-5 lg:grid-cols-4">
         {/* Pie */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-border bg-white p-5 shadow-soft">
-          <div className="text-[12px] font-semibold text-muted-foreground">Where Your Money Goes</div>
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl border border-border bg-white p-5 shadow-soft"
+        >
+          <div className="text-[12px] font-semibold text-muted-foreground">
+            Where Your Money Goes
+          </div>
           <div className="mt-3 flex items-center gap-4">
             <Donut segments={dist} />
             <ul className="space-y-1.5 text-[12px]">
@@ -773,14 +953,27 @@ function Transparency() {
               ))}
             </ul>
           </div>
-          <a href="#" className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline">
+          <button
+            type="button"
+            onClick={() =>
+              toast.info(
+                "A detailed financial breakdown isn't published here yet — check back soon.",
+              )
+            }
+            className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline"
+          >
             View Detailed Breakdown <ArrowRight className="size-3.5" />
-          </a>
+          </button>
         </motion.div>
 
         {/* Compliance */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-border bg-white p-5 shadow-soft">
-          <div className="text-[12px] font-semibold text-muted-foreground">Compliance & Registrations</div>
+        <motion.div
+          variants={fadeUp}
+          className="rounded-2xl border border-border bg-white p-5 shadow-soft"
+        >
+          <div className="text-[12px] font-semibold text-muted-foreground">
+            Compliance & Registrations
+          </div>
           <ul className="mt-3 space-y-2.5">
             {compliance.map((c) => (
               <li key={c} className="flex items-center justify-between text-[13px]">
@@ -789,13 +982,23 @@ function Transparency() {
               </li>
             ))}
           </ul>
-          <a href="#" className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline">
+          <button
+            type="button"
+            onClick={() =>
+              toast.info("Certificate copies aren't published here yet — check back soon.")
+            }
+            className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline"
+          >
             View All Certificates <ArrowRight className="size-3.5" />
-          </a>
+          </button>
         </motion.div>
 
         {/* Audit */}
-        <motion.div variants={fadeUp} whileHover={{ y: -5 }} className="rounded-2xl border border-border bg-white p-5 shadow-soft transition-shadow hover:shadow-elegant">
+        <motion.div
+          variants={fadeUp}
+          whileHover={{ y: -5 }}
+          className="rounded-2xl border border-border bg-white p-5 shadow-soft transition-shadow hover:shadow-elegant"
+        >
           <div className="text-[12px] font-semibold text-muted-foreground">Audit Reports</div>
           <div className="mt-3 flex items-start gap-3">
             <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand">
@@ -805,28 +1008,48 @@ function Transparency() {
               We are audited annually by independent chartered accountants.
             </p>
           </div>
-          <a href="#" onClick={(e) => { e.preventDefault(); window.open("about:blank"); }} className="mt-4 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline">
+          <button
+            type="button"
+            onClick={() =>
+              toast.info("The latest audit report isn't published here yet — check back soon.")
+            }
+            className="mt-4 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline"
+          >
             View Latest Audit Report <ArrowRight className="size-3.5" />
-          </a>
+          </button>
         </motion.div>
 
         {/* Annual Report */}
-        <motion.div variants={fadeUp} whileHover={{ y: -5 }} className="rounded-2xl border border-border bg-white p-5 shadow-soft transition-shadow hover:shadow-elegant">
-          <div className="text-[12px] font-semibold text-muted-foreground">Annual Impact Report</div>
+        <motion.div
+          variants={fadeUp}
+          whileHover={{ y: -5 }}
+          className="rounded-2xl border border-border bg-white p-5 shadow-soft transition-shadow hover:shadow-elegant"
+        >
+          <div className="text-[12px] font-semibold text-muted-foreground">
+            Annual Impact Report
+          </div>
           <div className="mt-3 flex items-center gap-3">
             <div className="relative">
               <div className="h-16 w-12 rotate-[-4deg] rounded-sm grad-navy shadow-elegant" />
               <div className="absolute right-2 top-2 h-16 w-12 rotate-[6deg] rounded-sm bg-white shadow-soft">
                 <div className="mt-2 border-y border-border py-0.5 text-center text-[6px] font-bold text-navy">
-                  IMPACT<br/>REPORT
+                  IMPACT
+                  <br />
+                  REPORT
                 </div>
               </div>
             </div>
             <div className="text-[12.5px] text-muted-foreground">Read our full 2023–24 report.</div>
           </div>
-          <a href="#" className="mt-4 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline">
+          <button
+            type="button"
+            onClick={() =>
+              toast.info("The full annual report isn't published here yet — check back soon.")
+            }
+            className="mt-4 inline-flex items-center gap-1 text-[12.5px] font-semibold text-brand story-underline"
+          >
             View Full Report <ArrowRight className="size-3.5" />
-          </a>
+          </button>
         </motion.div>
       </div>
     </Section>
@@ -848,7 +1071,9 @@ function Donut({ segments }: { segments: { label: string; pct: number; color: st
           const el = (
             <motion.circle
               key={s.label}
-              cx="50" cy="50" r={R}
+              cx="50"
+              cy="50"
+              r={R}
               fill="none"
               stroke={s.color}
               strokeWidth="16"
@@ -883,23 +1108,48 @@ function Donut({ segments }: { segments: { label: string; pct: number; color: st
 /* ---------- STORIES ---------- */
 function Stories() {
   const stories = [
-    { name: "Ananya", role: "Class 10 Student", img: story3, q: "The scholarship I received didn't just help me with fees, it gave me the confidence to dream bigger." },
-    { name: "RWA Coordinator", role: "Sector 9", img: story1, q: "Our society's health camp helped over 300 families. Transparency made the whole journey seamless." },
-    { name: "Rohit", role: "Donor, Bangalore", img: story2, q: "Knowing exactly where my contribution goes makes all the difference." },
+    {
+      name: "Ananya",
+      role: "Class 10 Student",
+      img: story3,
+      q: "The scholarship I received didn't just help me with fees, it gave me the confidence to dream bigger.",
+    },
+    {
+      name: "RWA Coordinator",
+      role: "Sector 9",
+      img: story1,
+      q: "Our society's health camp helped over 300 families. Transparency made the whole journey seamless.",
+    },
+    {
+      name: "Rohit",
+      role: "Donor, Bangalore",
+      img: story2,
+      q: "Knowing exactly where my contribution goes makes all the difference.",
+    },
   ];
   const [i, setI] = useState(0);
   return (
     <Section id="stories" className="mx-auto mt-20 max-w-[1300px] px-6 lg:mt-24 lg:px-10">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">Stories of Change</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+        Stories of Change
+      </p>
       <div className="flex items-end justify-between">
         <h2 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
           Real Stories. <span className="italic text-brand">Real Impact.</span>
         </h2>
         <div className="hidden gap-2 lg:flex">
-          <button onClick={() => setI((v) => (v - 1 + stories.length) % stories.length)} aria-label="Previous story" className="rounded-full border border-border bg-white p-2 hover:bg-accent">
+          <button
+            onClick={() => setI((v) => (v - 1 + stories.length) % stories.length)}
+            aria-label="Previous story"
+            className="rounded-full border border-border bg-white p-2 hover:bg-accent"
+          >
             <ChevronLeft className="size-4" />
           </button>
-          <button onClick={() => setI((v) => (v + 1) % stories.length)} aria-label="Next story" className="rounded-full border border-border bg-white p-2 hover:bg-accent">
+          <button
+            onClick={() => setI((v) => (v + 1) % stories.length)}
+            aria-label="Next story"
+            className="rounded-full border border-border bg-white p-2 hover:bg-accent"
+          >
             <ChevronRight className="size-4" />
           </button>
         </div>
@@ -920,7 +1170,14 @@ function Stories() {
             <Quote className="absolute right-4 top-4 size-6 text-brand/20" />
             <blockquote className="text-[14px] leading-relaxed text-navy/85">"{s.q}"</blockquote>
             <figcaption className="mt-5 flex items-center gap-3">
-              <img src={s.img} alt={s.name} loading="lazy" width={512} height={512} className="size-11 rounded-full object-cover" />
+              <img
+                src={s.img}
+                alt={s.name}
+                loading="lazy"
+                width={512}
+                height={512}
+                className="size-11 rounded-full object-cover"
+              />
               <div>
                 <div className="text-sm font-semibold text-navy">— {s.name}</div>
                 <div className="text-[11.5px] text-muted-foreground">{s.role}</div>

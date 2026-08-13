@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useCountUp<T extends HTMLElement = HTMLElement>(target: number, duration = 2000, decimals = 0) {
+export function useCountUp<T extends HTMLElement = HTMLElement>(
+  target: number,
+  duration = 2000,
+  decimals = 0,
+) {
   const [value, setValue] = useState(0);
   const ref = useRef<T | null>(null);
   const played = useRef(false);
@@ -32,9 +36,7 @@ export function useCountUp<T extends HTMLElement = HTMLElement>(target: number, 
   }, [target, duration]);
 
   const formatted =
-    decimals > 0
-      ? value.toFixed(decimals)
-      : Math.round(value).toLocaleString("en-IN");
+    decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString("en-IN");
 
   return { ref, value, formatted };
 }

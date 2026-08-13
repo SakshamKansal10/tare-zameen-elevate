@@ -88,8 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Tare Zameen Foundation" },
       {
         property: "og:description",
-        content:
-          "Radically transparent giving. Verified beneficiaries. Real-time impact.",
+        content: "Radically transparent giving. Verified beneficiaries. Real-time impact.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
